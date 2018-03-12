@@ -10,24 +10,36 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DateOperations {
+
+    /**
+     * @return Day of week for a date of each year since 1994 to till date.
+     */
     public static List<String> dayOfWeek() {
-        LocalDate bDay = LocalDate.of(1994, 2, 21);
+        LocalDate birthDay = LocalDate.of(1994, 2, 21);
         LocalDate today = LocalDate.now();
 
         List<LocalDate> dateList = new ArrayList<>();
-        while (bDay.getYear() <= today.getYear()) {
-            dateList.add(bDay);
-            bDay = bDay.plusYears(1);
+        while (birthDay.getYear() <= today.getYear()) {
+            dateList.add(birthDay);
+            birthDay = birthDay.plusYears(1);
         }
         return dateList.stream()
                 .map(localDate -> localDate.getDayOfWeek().toString()).collect(Collectors.toList());
     }
 
+    /**
+     * @param timeZone takes time zoneID in string.
+     * @return date and time for that zoneId.
+     */
     public static String getTimeByTimeZone(String timeZone) {
-        ZonedDateTime zonedDateTime = ZonedDateTime.now(ZoneId.of(timeZone));
+        ZonedDateTime zonedDateTime;
+        zonedDateTime = ZonedDateTime.now(ZoneId.of(timeZone));
         return "Time as per given " + timeZone + "(TimeZone values " + zonedDateTime;
     }
 
+    /**
+     * @return leap years from 1900.
+     */
     public static List<Integer> leapYearsTillDate() {
         List<LocalDate> leapYearList = new ArrayList<>();
         LocalDate today = LocalDate.now();
@@ -42,6 +54,9 @@ public class DateOperations {
                 .map(LocalDate::getYear).collect(Collectors.toList());
     }
 
+    /**
+     * @return duration of life span of Mahatma Gandhi in second.
+     */
     public static Long secondsMahathmaLived() {
         LocalDateTime mahatmaBornOn = LocalDateTime.parse("1869-10-02T00:00:00");
         LocalDateTime mahatmaDiedOn = LocalDateTime.parse("1948-01-30T00:00:00");
