@@ -57,7 +57,7 @@ public class DateOperations {
     /**
      * @return duration of life span of Mahatma Gandhi in second.
      */
-    public static Long secondsMahathmaLived() {
+    public static Long secondsMahatmaLived() {
         LocalDateTime mahatmaBornOn = LocalDateTime.parse("1869-10-02T00:00:00");
         LocalDateTime mahatmaDiedOn = LocalDateTime.parse("1948-01-30T00:00:00");
         return Duration.between(mahatmaBornOn, mahatmaDiedOn).toMinutes() * 60;
